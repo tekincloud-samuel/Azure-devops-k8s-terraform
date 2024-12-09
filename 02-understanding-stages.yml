@@ -1,0 +1,34 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+stages:
+
+- stage: Build
+  jobs:
+  - job: FirstJob
+    steps:
+    - bash: echo build FirstJob
+  - job: SecondJob
+    steps:
+    - bash: echo build SecondJob
+
+- stage: DevDeploy
+  jobs:
+  - job: DevDeploy
+    steps:
+    - bash: echo DevDeploy
+
+- stage: QADeploy
+  jobs:
+  - job: QADeploy
+    steps:
+    - bash: echo QADeploy
+
+- stage: ProdDeploy
+  jobs:
+  - job: ProdDeploy
+    steps:
+    - bash: echo ProdDeploy
