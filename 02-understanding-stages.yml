@@ -17,9 +17,7 @@ stages:
     - bash: echo $(Build.SourceBranchName)
     - bash: echo $(Build.SourceDirectory)
     - bash: echo $(System.DefaultWorkingDirectory)
-    - bash: |
-        echo "Resolved Path: $(System.DefaultWorkingDirectory)"
-        ls -R "$(System.DefaultWorkingDirectory)"
+    - bash: ls -R /mnt/c/Dev/2/s
     - bash: echo $(Build.ArtifactStagingDirectory)
   # - job: SecondJob
   #   steps:
