@@ -23,14 +23,14 @@ stages:
   jobs:
   - job: DevDeploy
     steps:
-    - bash: echo $(Environment)DeployJob
+    - bash: echo $(environment)DeployJob
 
 - stage: QADeploy
   dependsOn: Build
   jobs:
   - job: QADeploy
     steps:
-    - bash: echo $(Environment)DeployJob
+    - bash: echo $(environment)DeployJob
 
 - stage: ProdDeploy
   dependsOn:
