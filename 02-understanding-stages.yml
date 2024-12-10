@@ -9,30 +9,36 @@ stages:
 - stage: Build
   jobs:
   - job: FirstJob
-
     steps:
-    - bash: echo $(PipelineLevelVariable)
-    - bash: echo build FirstJob
-    - bash: echo $(Build.BuildNumber)
-    - bash: echo $(Build.BuildId)
-    - bash: echo $(Build.SourceBranchName)
-    - bash: echo $(Build.SourceDirectory)
-    - bash: echo $(System.DefaultWorkingDirectory)
-    - bash: ls -R /mnt/c/Dev/2/s
-    - bash: echo $(Build.ArtifactStagingDirectory)
-    - bash: java -version
-    - bash: node --version
-    - bash: python --version
-    - bash: mvn -version
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: |
-          **/*.yaml
-          **/*.tf
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
+      - script: |
+          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+          sudo apt install -y nodejs
+          node --version
+        displayName: Install Node.js
+
+    # steps:
+    # - bash: echo $(PipelineLevelVariable)
+    # - bash: echo build FirstJob
+    # - bash: echo $(Build.BuildNumber)
+    # - bash: echo $(Build.BuildId)
+    # - bash: echo $(Build.SourceBranchName)
+    # - bash: echo $(Build.SourceDirectory)
+    # - bash: echo $(System.DefaultWorkingDirectory)
+    # - bash: ls -R /mnt/c/Dev/2/s
+    # - bash: echo $(Build.ArtifactStagingDirectory)
+    # - bash: java -version
+    # - bash: node --version
+    # - bash: python --version
+    # - bash: mvn -version
+    # - bash: ls -R $(Build.ArtifactStagingDirectory)
+    # - task: CopyFiles@2
+    #   inputs:
+    #     SourceFolder: '$(System.DefaultWorkingDirectory)'
+    #     Contents: |
+    #       **/*.yaml
+    #       **/*.tf
+    #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    # - bash: ls -R $(Build.ArtifactStagingDirectory)
     
   # - job: SecondJob
   #   steps:
