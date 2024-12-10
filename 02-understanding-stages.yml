@@ -33,6 +33,7 @@ stages:
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: ls -R $(Build.ArtifactStagingDirectory)
+    
   # - job: SecondJob
   #   steps:
   #   - bash: echo build SecondJob
