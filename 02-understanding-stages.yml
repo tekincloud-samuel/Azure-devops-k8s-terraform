@@ -9,13 +9,16 @@ stages:
 - stage: Build
   jobs:
   - job: FirstJob
+    pool:
+      vmImage: 'windows-latest'
+
     steps:
       - script: |
-          echo "Setting up Java..."
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jdk
+          echo "Installing Java..."
+          choco install openjdk
           java -version
-        displayName: 'Install Java and Verify'
+        displayName: 'Install Java'
+
 
     # steps:
     # - bash: echo $(PipelineLevelVariable)
