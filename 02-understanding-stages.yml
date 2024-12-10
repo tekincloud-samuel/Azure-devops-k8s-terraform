@@ -10,11 +10,12 @@ stages:
   jobs:
   - job: FirstJob
     steps:
-      - script: |
-          echo "Installing Java..."
-          choco install openjdk
+      - powershell: |
+          Invoke-WebRequest -Uri https://download.oracle.com/java/11/latest/jdk-11_windows-x64_bin.exe -OutFile jdk-11_windows-x64_bin.exe
+          Start-Process -FilePath ".\jdk-11_windows-x64_bin.exe" -ArgumentList "/s" -Wait
+          $env:Path += ";C:\Program Files\Java\jdk-11\bin"
           java -version
-        displayName: 'Install Java'
+        displayName: 'Download and Install Java'
 
 
     # steps:
