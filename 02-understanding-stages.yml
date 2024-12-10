@@ -9,9 +9,6 @@ stages:
 - stage: Build
   jobs:
   - job: FirstJob
-    pool:
-      vmImage: 'windows-latest'
-
     steps:
       - script: |
           echo "Installing Java..."
